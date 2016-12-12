@@ -1,0 +1,13 @@
+[Unit]
+Description=Linux Guest Environment for Google Compute Engine
+
+[Service]
+ExecStart=$EXEC_START
+KillSignal=SIGRTMIN+3
+
+Restart=on-failure
+WorkingDirectory=$DESTDIR
+
+[Install]
+WantedBy=multi-user.target
+

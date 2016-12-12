@@ -1,0 +1,157 @@
+{
+    "ociVersion": "1.0.0",
+    "platform": {
+        "os": "linux",
+        "arch": "x86_64"
+    },
+    "process": {
+        "terminal": false,
+        "user": {},
+        "args": [
+            "/usr/sbin/init"
+        ],
+        "env": [
+            "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "TERM=xterm",
+            "container=docker",
+            "container_uuid=c58cd6f7-6c8a-489a-af19-419597d22fbe"
+        ],
+        "cwd": "/",
+        "capabilities": [
+            "CAP_SYS_ADMIN",
+            "CAP_CHOWN",
+            "CAP_SETUID",
+            "CAP_SETGID",
+            "CAP_FOWNER",
+            "CAP_DAC_OVERRIDE",
+            "CAP_FSETID",
+            "CAP_SETFCAP",
+            "CAP_KILL",
+            "CAP_SETPCAP",
+            "CAP_NET_BIND_SERVICE",
+            "CAP_NET_RAW",
+            "CAP_NET_BROADCAST",
+            "CAP_AUDIT_WRITE"
+        ]
+    },
+    "root": {
+        "path": "rootfs",
+        "readonly": true
+    },
+    "mounts": [
+        {
+            "destination": "/proc",
+            "type": "proc",
+            "source": "proc",
+            "options": [
+		"ro"
+	    ]
+        },
+        {
+            "destination": "/dev",
+            "type": "tmpfs",
+            "source": "tmpfs",
+            "options": [
+                "nosuid",
+                "strictatime",
+                "mode=755",
+                "size=65536k"
+            ]
+        },
+        {
+            "destination": "/dev/pts",
+            "type": "devpts",
+            "source": "devpts",
+            "options": [
+                "nosuid",
+                "noexec",
+                "newinstance",
+                "ptmxmode=0666",
+                "mode=0620"
+            ]
+        },
+        {
+            "destination": "/dev/shm",
+            "type": "tmpfs",
+            "source": "shm",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev",
+                "mode=1777",
+                "size=65536k"
+            ]
+        },
+        {
+            "destination": "/dev/mqueue",
+            "type": "mqueue",
+            "source": "mqueue",
+            "options": [
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        },
+        {
+            "destination": "/sys",
+            "type": "sysfs",
+            "source": "sysfs",
+            "options": [
+                "ro",
+                "nosuid",
+                "noexec",
+                "nodev"
+            ]
+        }
+    ],
+    "hostname": "gce",
+    "hooks": {
+        "prestart": [
+            {
+                "path": "/usr/libexec/oci/hooks.d/oci-systemd-hook"
+            },
+            {
+                "path": "/usr/libexec/oci/hooks.d/oci-register-machine"
+            }
+        ],
+        "poststop": [
+            {
+                "path": "/usr/libexec/oci/hooks.d/oci-systemd-hook"
+            },
+            {
+                "path": "/usr/libexec/oci/hooks.d/oci-register-machine"
+            }
+        ]
+    },
+    "linux": {
+        "rlimits": [
+            {
+                "type": "RLIMIT_NOFILE",
+                "hard": 1024,
+                "soft": 1024
+            }
+        ],
+        "resources": {
+            "devices": [
+                {
+                    "allow": false,
+                    "access": "rwm"
+                }
+            ]
+        },
+        "namespaces": [
+            {
+                "type": "pid"
+            },
+            {
+                "type": "ipc"
+            },
+            {
+                "type": "uts"
+            },
+            {
+                "type": "mount"
+            }
+        ]
+    }
+}
