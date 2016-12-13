@@ -102,9 +102,53 @@
                 "noexec",
                 "nodev"
             ]
+        },
+        {
+            "destination": "/etc/resolv.conf",
+            "type": "bind",
+            "source": "/etc/resolv.conf",
+            "options": [
+                "bind",
+                "ro"
+            ]
+        },
+        {
+            "destination": "/etc/ssh",
+            "type": "bind",
+            "source": "/etc/ssh",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
+            "destination": "/etc/boto.cfg",
+            "type": "bind",
+            "source": "/etc/boto.cfg",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
+            "destination": "/etc/default/instance_configs.cfg",
+            "type": "bind",
+            "source": "/etc/default/instance_configs.cfg",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
+            "destination": "/dev/rtc",
+            "type": "bind",
+            "source": "/dev/rtc",
+            "options": [
+                "bind",
+                "rw"
+            ]
         }
     ],
-    "hostname": "gce",
     "hooks": {
         "prestart": [
             {
@@ -134,7 +178,7 @@
         "resources": {
             "devices": [
                 {
-                    "allow": false,
+                    "allow": true,
                     "access": "rwm"
                 }
             ]
@@ -145,9 +189,6 @@
             },
             {
                 "type": "ipc"
-            },
-            {
-                "type": "uts"
             },
             {
                 "type": "mount"
