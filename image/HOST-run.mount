@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount /run into /HOST chroot
+Before=google-accounts-daemon.service
+
+[Mount]
+What=/run
+Where=/HOST/run
+Type=none
+Options=bind
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount /tmp into /HOST chroot
+Before=google-accounts-daemon.service
+
+[Mount]
+What=/tmp
+Where=/HOST/tmp
+Type=none
+Options=bind
+
+[Install]
+WantedBy=multi-user.target
+

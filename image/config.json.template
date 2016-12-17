@@ -19,6 +19,8 @@
         "cwd": "/",
         "capabilities": [
             "CAP_SYS_ADMIN",
+            "CAP_SYS_TIME",
+            "CAP_SYS_CHROOT",
             "CAP_CHOWN",
             "CAP_SETUID",
             "CAP_SETGID",
@@ -104,6 +106,15 @@
             ]
         },
         {
+            "destination": "/dev/rtc",
+            "type": "bind",
+            "source": "/dev/rtc",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
             "destination": "/etc/resolv.conf",
             "type": "bind",
             "source": "/etc/resolv.conf",
@@ -140,9 +151,45 @@
             ]
         },
         {
-            "destination": "/dev/rtc",
+            "destination": "/HOST/etc",
             "type": "bind",
-            "source": "/dev/rtc",
+            "source": "/etc",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
+            "destination": "/HOST/home",
+            "type": "bind",
+            "source": "/home",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
+            "destination": "/HOST/var/lib/google",
+            "type": "bind",
+            "source": "/var/lib/google",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
+            "destination": "/HOST/var/spool/mail",
+            "type": "bind",
+            "source": "/var/spool/mail",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
+            "destination": "/HOST/var/log/lastlog",
+            "type": "bind",
+            "source": "/var/log/lastlog",
             "options": [
                 "bind",
                 "rw"
