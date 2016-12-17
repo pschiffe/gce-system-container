@@ -4,6 +4,8 @@ Provides [CGE Agents](https://github.com/GoogleCloudPlatform/compute-image-packa
 
 This image requires latest [oci-systemd-hook](https://github.com/projectatomic/oci-systemd-hook) and [oci-register-machine](https://github.com/projectatomic/oci-systemd-hook) built from master branch.
 
+Automated build can be found at [Docker Hub](https://hub.docker.com/r/pschiffe/gce-agents/).
+
 ## Usage
 
 ```
