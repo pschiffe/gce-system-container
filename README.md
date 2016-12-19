@@ -19,3 +19,10 @@ sudo atomic pull --storage ostree docker:${NAME}
 sudo atomic install --system ${NAME}
 sudo systemctl start ${NAME}
 ```
+
+### Logs on the host
+
+You can see logs from the container directly on the host with something like:
+```
+sudo journalctl -D /var/log/journal/c58cd6f76c8a489aaf19419597d22fbe
+```
