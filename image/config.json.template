@@ -46,8 +46,8 @@
             "type": "proc",
             "source": "proc",
             "options": [
-		"ro"
-	    ]
+                "ro"
+            ]
         },
         {
             "destination": "/dev",
