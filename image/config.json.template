@@ -46,7 +46,7 @@
             "type": "proc",
             "source": "proc",
             "options": [
-                "ro"
+                "rw"
             ]
         },
         {
@@ -103,6 +103,14 @@
                 "nosuid",
                 "noexec",
                 "nodev"
+            ]
+        },
+        {
+            "destination": "/sys/fs/selinux",
+            "type": "bind",
+            "source": "/sys/fs/selinux",
+            "options": [
+                "bind"
             ]
         },
         {
