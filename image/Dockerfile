@@ -9,6 +9,7 @@ RUN yum -y --setopt=tsflags=nodocs install \
         google-compute-engine \
         google-compute-engine-init \
         google-config \
+        selinux-policy selinux-policy-targeted setools-console \
         \
         less bash-completion iproute vim strace \
     && yum clean all
