@@ -132,6 +132,24 @@
             ]
         },
         {
+            "destination": "/etc/hosts",
+            "type": "bind",
+            "source": "/etc/hosts",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
+            "destination": "/etc/hostname",
+            "type": "bind",
+            "source": "/etc/hostname",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
             "destination": "/etc/ssh",
             "type": "bind",
             "source": "/etc/ssh",
@@ -171,6 +189,15 @@
             "destination": "/HOST/home",
             "type": "bind",
             "source": "/home",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
+            "destination": "/HOST/usr/bin",
+            "type": "bind",
+            "source": "/usr/bin",
             "options": [
                 "bind",
                 "rw"

@@ -1,0 +1,11 @@
+[Unit]
+Description=Teardown script
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStop=/usr/local/bin/teardown.sh
+
+[Install]
+WantedBy=multi-user.target
+

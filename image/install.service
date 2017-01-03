@@ -1,0 +1,13 @@
+[Unit]
+Description=Install script
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/local/bin/install.sh
+
+[Install]
+WantedBy=multi-user.target
+
