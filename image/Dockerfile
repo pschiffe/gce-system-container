@@ -19,14 +19,13 @@ STOPSIGNAL SIGRTMIN+3
 ENV container=docker
 
 COPY manifest.json tmpfiles.template service.template config.json.template /exports/
-COPY dbus.service install.service teardown.service /etc/systemd/system/
-COPY run-in-host.sh install.sh teardown.sh /usr/local/bin/
+COPY dbus.service install.service /etc/systemd/system/
+COPY run-in-host.sh install.sh /usr/local/bin/
 COPY google-accounts-daemon-config.conf /etc/systemd/system/google-accounts-daemon.service.d/config.conf
 
 RUN rm -f /etc/machine-id /etc/fstab /var/lib/rpm/__db.* \
   && mkdir -p /var/lib/google \
-  && systemctl enable install.service \
-  && systemctl enable teardown.service
+  && systemctl enable install.service
 
 CMD [ "/usr/sbin/init" ]
 
