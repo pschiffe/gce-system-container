@@ -220,15 +220,6 @@
                 "bind",
                 "rw"
             ]
-        },
-        {
-            "destination": "/HOST/var/log/lastlog",
-            "type": "bind",
-            "source": "/var/log/lastlog",
-            "options": [
-                "bind",
-                "rw"
-            ]
         }
     ],
     "hooks": {
