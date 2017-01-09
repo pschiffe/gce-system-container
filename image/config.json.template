@@ -195,9 +195,9 @@
             ]
         },
         {
-            "destination": "/HOST/usr/bin",
+            "destination": "/HOST/usr/local/bin",
             "type": "bind",
-            "source": "/usr/bin",
+            "source": "/usr/local/bin",
             "options": [
                 "bind",
                 "rw"
