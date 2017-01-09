@@ -195,6 +195,15 @@
             ]
         },
         {
+            "destination": "/HOST/usr/bin",
+            "type": "bind",
+            "source": "/usr/bin",
+            "options": [
+                "bind",
+                "rw"
+            ]
+        },
+        {
             "destination": "/HOST/var/lib/google",
             "type": "bind",
             "source": "/var/lib/google",
