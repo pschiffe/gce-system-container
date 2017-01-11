@@ -14,7 +14,7 @@
             "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
             "TERM=xterm",
             "container=docker",
-            "container_uuid=c58cd6f7-6c8a-489a-af19-419597d22fbe"
+            "container_uuid=$UUID"
         ],
         "cwd": "/",
         "capabilities": [
