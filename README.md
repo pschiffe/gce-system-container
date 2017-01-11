@@ -24,7 +24,7 @@ sudo systemctl start ${NAME}
 
 You can see logs from the container directly on the host with something like:
 ```
-sudo journalctl -D /var/log/journal/c58cd6f76c8a489aaf19419597d22fbe
+sudo journalctl -D /var/log/journal/$(sudo runc exec -t ${NAME} cat /etc/machine-id)
 ```
 
 ## Getting latest Centos Atomic Host Continuous in the GCE
