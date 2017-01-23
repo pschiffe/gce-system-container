@@ -24,7 +24,7 @@ COPY run-in-host.sh install.sh /usr/local/bin/
 COPY google-accounts-daemon-config.conf /etc/systemd/system/google-accounts-daemon.service.d/config.conf
 
 RUN rm -f /etc/machine-id /etc/fstab /var/lib/rpm/__db.* \
-  && mkdir -p /var/lib/google \
+  && mkdir -p /var/lib/google /run/secrets \
   && systemctl enable install.service
 
 CMD [ "/usr/sbin/init" ]
