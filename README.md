@@ -2,7 +2,7 @@
 
 Provides [GCE Agents](https://github.com/GoogleCloudPlatform/compute-image-packages) as a system container for atomic host.
 
-This image requires latest [oci-systemd-hook](https://github.com/projectatomic/oci-systemd-hook) and [oci-register-machine](https://github.com/projectatomic/oci-systemd-hook) built from master branch.
+This image requires recent [oci-systemd-hook](https://github.com/projectatomic/oci-systemd-hook) and [oci-register-machine](https://github.com/projectatomic/oci-systemd-hook) packages.
 
 Automated build can be found at [Docker Hub](https://hub.docker.com/r/pschiffe/gce-agents/).
 
@@ -65,6 +65,21 @@ Once the instance is running, you can ssh to it and change the release channel t
 ```
 gcloud compute ssh centos@centosah
 sudo rpm-ostree rebase -r centos-atomic-continuous:centos-atomic-host/7/x86_64/devel/continuous
+```
+
+## Getting RHEL Atomic Host in the GCE
+
+It's possible to use this image with RHEL Atomic Host 7.3.2 and later. Steps for getting this OS in the GCE are similar to steps above. You need to have account and project in https://cloud.google.com/ and configured Google SDK. Configuration of the ssh key is the same as above (if you didn't run any instance before). To download RHEL Atomic Host from Red Hat access portal (you need an account there), visit https://access.redhat.com/downloads/content/271/ver=/rhel---7/7.3.2/x86_64/product-software and download Red Hat Atomic Cloud Image. Then:
+```
+qemu-img convert -p -S 4096 -f qcow2 -O raw rhel-atomic-cloud-7.3.2-1.x86_64.qcow2 disk.raw
+tar -Szcvf rhelah.tar.gz disk.raw
+BUCKET_NAME=my-proj-rhelah-bucket
+gsutil mb gs://${BUCKET_NAME}
+gsutil cp rhelah.tar.gz gs://${BUCKET_NAME}
+gcloud compute images create rhelah --source-uri gs://${BUCKET_NAME}/rhelah.tar.gz
+gsutil -m rm -r gs://${BUCKET_NAME}
+gcloud compute instances create "rhelah" --machine-type "g1-small" --image "rhelah" --boot-disk-size "20" --boot-disk-type "pd-ssd"
+gcloud compute ssh cloud-user@rhelah
 ```
 
 ## Using this image on Atomic Host
