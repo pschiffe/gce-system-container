@@ -69,9 +69,9 @@ sudo rpm-ostree rebase -r centos-atomic-continuous:centos-atomic-host/7/x86_64/d
 
 ## Getting RHEL Atomic Host in the GCE
 
-It's possible to use this image with RHEL Atomic Host 7.3.2 and later. Steps for getting this OS in the GCE are similar to steps above. You need to have account and project in https://cloud.google.com/ and configured Google SDK. Configuration of the ssh key is the same as above (if you didn't run any instance before). To download RHEL Atomic Host from Red Hat access portal (you need an account there), visit https://access.redhat.com/downloads/content/271/ver=/rhel---7/7.3.2/x86_64/product-software and download Red Hat Atomic Cloud Image. Then:
+It's possible to use this image with RHEL Atomic Host 7.3.2 and later. Steps for getting this OS in the GCE are similar to steps above. You need to have account and project in https://cloud.google.com/ and configured Google SDK. Configuration of the ssh key is the same as above (if you didn't run any instance before). To download RHEL Atomic Host from Red Hat access portal (you need an account there), visit https://access.redhat.com/downloads/content/271/ver=/rhel---7/7.3.6/x86_64/product-software and download Red Hat Atomic Cloud Image. Then:
 ```
-qemu-img convert -p -S 4096 -f qcow2 -O raw rhel-atomic-cloud-7.3.2-1.x86_64.qcow2 disk.raw
+qemu-img convert -p -S 4096 -f qcow2 -O raw rhel-atomic-cloud-7.3.6-5.x86_64.qcow2 disk.raw
 tar -Szcvf rhelah.tar.gz disk.raw
 BUCKET_NAME=my-proj-rhelah-bucket
 gsutil mb gs://${BUCKET_NAME}
