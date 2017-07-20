@@ -282,21 +282,21 @@
         "prestart": [
             {
                 "path": "/usr/libexec/oci/hooks.d/oci-systemd-hook",
-                "args": [ "prestart" ]
+                "args": [ "oci-systemd-hook", "prestart" ]
             },
             {
                 "path": "/usr/libexec/oci/hooks.d/oci-register-machine",
-                "args": [ "prestart" ]
+                "args": [ "oci-register-machine", "prestart" ]
             }
         ],
         "poststop": [
             {
                 "path": "/usr/libexec/oci/hooks.d/oci-systemd-hook",
-                "args": [ "poststop" ]
+                "args": [ "oci-systemd-hook", "poststop" ]
             },
             {
                 "path": "/usr/libexec/oci/hooks.d/oci-register-machine",
-                "args": [ "poststop" ]
+                "args": [ "oci-register-machine", "poststop" ]
             }
         ]
     },
