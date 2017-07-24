@@ -10,8 +10,6 @@ RUN yum -y --setopt=tsflags=nodocs install \
         google-config \
         google-compute-engine \
         google-compute-engine-init \
-        \
-        less bash-completion iproute vim strace \
     && yum clean all
 
 STOPSIGNAL SIGRTMIN+3
@@ -28,4 +26,3 @@ RUN rm -f /etc/machine-id /etc/fstab /var/lib/rpm/__db.* \
   && systemctl enable install.service
 
 CMD [ "/usr/sbin/init" ]
-
