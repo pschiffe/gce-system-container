@@ -1,16 +1,23 @@
 FROM centos:7
 MAINTAINER "Peter Schiffer" <pschiffe@redhat.com>
 
+ENV NAME=gce-agents VERSION=0 RELEASE=0 ARCH=x86_64
+LABEL name="$FGC/$NAME" \
+  version="$VERSION" \
+  release="$RELEASE.$DISTTAG" \
+  architecture="$ARCH" \
+  summary="Packages for Google Compute Engine Linux images." \
+  maintainer="Peter Schiffer <pschiffe@redhat.com>"
+
 COPY google-cloud.repo /etc/yum.repos.d/google-cloud.repo
 
 RUN yum -y --setopt=tsflags=nodocs install \
-        ethtool \
-        openssh \
-        selinux-policy-targeted \
-        google-config \
-        google-compute-engine \
-        google-compute-engine-init \
-    && yum clean all
+    ethtool \
+    iproute \
+    openssh \
+    selinux-policy-targeted \
+    google-compute-engine \
+  && yum clean all
 
 STOPSIGNAL SIGRTMIN+3
 
