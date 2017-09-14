@@ -10,4 +10,3 @@ ExecStart=/usr/local/bin/install.sh
 
 [Install]
 WantedBy=multi-user.target
-

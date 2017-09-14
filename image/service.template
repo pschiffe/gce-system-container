@@ -10,4 +10,3 @@ WorkingDirectory=$DESTDIR
 
 [Install]
 WantedBy=multi-user.target
-

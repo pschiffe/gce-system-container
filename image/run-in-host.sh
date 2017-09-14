@@ -8,4 +8,3 @@ mount --rbind /HOST/var/spool/mail /var/spool/mail
 mount --rbind /HOST/var/lib/google /var/lib/google
 
 exec $@
-
