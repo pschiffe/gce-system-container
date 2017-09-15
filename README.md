@@ -86,7 +86,7 @@ qemu-img convert -p -S 4096 -f qcow2 -O raw rhel-atomic-cloud-7.4.1-5.x86_64.qco
 tar -Szcvf rhelah.tar.gz disk.raw
 BUCKET_NAME=my-proj-rhelah-bucket
 gsutil mb gs://${BUCKET_NAME}
-gsutil cp rhelah.tar.gz gs://${BUCKET_NAME}
+gsutil -o GSUtil:parallel_composite_upload_threshold=150M cp rhelah.tar.gz gs://${BUCKET_NAME}
 gcloud compute images create rhelah --source-uri gs://${BUCKET_NAME}/rhelah.tar.gz
 gsutil -m rm -r gs://${BUCKET_NAME}
 gcloud compute instances create "rhelah" --machine-type "g1-small" --image "rhelah" --boot-disk-size "20" --boot-disk-type "pd-ssd"
